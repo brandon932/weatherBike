@@ -1,0 +1,9 @@
+/* add custom styles */
+div{
+  text-align: center;
+  border: 1px solid black;
+}
+
+.mainBody{
+  height: 15em;
+}
