@@ -1,8 +1,12 @@
 /* add custom styles */
 div{
-  text-align: center;
-  border: 1px solid black;
+  max-width: 100%;
 }
+.row{
+  border: 1px solid skyblue;
+  text-align: left;
+}
+
 
 .mainBody{
   height: 15em;
