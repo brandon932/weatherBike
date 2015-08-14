@@ -1,13 +1,41 @@
 /* add custom styles */
+body{
+  align-items: center;
+  background-color: transparent;
+  text-align: center;
+
+}
+html  {
+  background-image: url(http://www.nicholsconsultinginc.com/wp-content/uploads/2014/01/background-denver.jpg) ;
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 div{
-  max-width: 100%;
+
+  /*max-width: 100%;*/
+  /*background-color: rgb(10, 241, 181);*/
+}
+h1{
+  text-align: center;
+}
+.outline{
+  /*border: 1px solid skyblue;*/
+  min-height: inherit;
+  /*height: inherit;*/
+
 }
 .row{
-  border: 1px solid skyblue;
   text-align: left;
+  margin: 30px;
+  margin-right: 30px;
+  min-height: 10em;
 }
-
-
-.mainBody{
-  height: 15em;
+.bike-data, .things-data{
+  color: black;
+  text-decoration-style:solid;
+  /*max-width: 50%;*/
+  background-color:rgba(31, 249, 255, 0.5);
+  padding-left: 10px;
 }
