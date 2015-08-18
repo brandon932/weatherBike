@@ -1,19 +1,19 @@
 
-var weatherData = {};
 geo = navigator.geolocation;
 $(document).on('ready', function() {
-  navigator.geolocation.getCurrentPosition(success, error, options);
+  geo.getCurrentPosition(success, error, options);
 
   $("#date").val(moment().format('L'));
-  denver = new WeatherBike(weatherData);
-  denver.getCityData();
+  // $("#time").val(moment().format("h:mm a"));
 
   $(".bike-form").on("submit",function(e){
     e.preventDefault();
-    denver.renderWeather(weatherData);
-    denver.selectClothing(weatherData);
-    denver.renderThings(chartData);
-  });
-});
+    getData();
 
-// TODO: set default location of the person using geolocation in the form
+
+  });
+
+
+  });
+
+  // TODO:fix bug that prevents weather to be loaded untill seccond click

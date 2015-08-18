@@ -7,29 +7,36 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-  <!-- <div class="row"> -->
-    <!-- <div class="col-lg-12"> -->
-      <div class="header">
-        <h1>Weather Bike</h1>
-      </div>
-    <!-- </div> -->
-  <!-- </div> -->
   <div class="row">
-    <div class="col-sm-4 outline">
+  <div class="col-lg-12">
+  <div class="header">
+    <h1>Weather Bike</h1>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 outline">
       <form class="bike-form" action="index.html" method="post">
         <h3>What is your destination?</h3>
         <input id="location" type="text" name="name" placeholder="Enter your city, state..." value=""required>
         <br><br>
-        <input id="date" type="date" name="name" value="" placeholder="Date of ride...">
+        <input id="date" class="date" type="date" name="name" value="" placeholder="Date of ride...">
         <br><br>
-        <input class=" btn " type="submit" name="name" value="submit">
+        <!-- <input id="time" type="time" name="biking-time" value=""> -->
+        <select id="time" class="" name="time">
+          <option value="" disabled selected >Time...</option>
+          <option value=10 >12:00 AM</option>
+
+        </select>
+        <br><br>
+        <input  class=" btn " type="submit" name="name" value="submit">
         <br><br>
       </form>
     </div>
-    <div class="col-sm-4 outline">
+    <div class="col-md-3 outline">
       <div class="bike-data"></div>
     </div>
-    <div class="col-sm-4 outline">
+    <div class="col-md-3 outline">
       <div class="things-data">
       </div>
     </div>

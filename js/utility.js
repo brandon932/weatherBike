@@ -1,14 +1,24 @@
 
+var weatherData = {};
+var clothing = '';
+function days(){
+  if (selectDay()[0] === undefined){
+    // console.log("should print three");
+    return 3;
+  }else{
+    // console.log("need three ");
+    return selectDay().length + selectDay()[0];
+  }
+}
 var WeatherBike = function(data){
   this.data = data;
   this.time = 0;
 };
 WeatherBike.prototype.renderWeather = function(data){
   $(".bike-data").html("");
-  for (var i = 0; i < 3; i++) {
+  for (var i = selectDay()[0]; i < days() ; i++) {
     $(".bike-data").append(moment.unix(weatherData.list[i].dt).format("MM/DD/YYYY h:mm:ss a") +"<br>");
     $(".bike-data").append(data.list[i].weather[0].description+"<br>");
-    // $(".bike-data").append("<br>");
 
     for (var key in data.list[i].main){
       if (key === "temp"||key=== "pressure" || key==="humidity") {
@@ -19,44 +29,37 @@ WeatherBike.prototype.renderWeather = function(data){
   }
 };
 
-WeatherBike.prototype.renderThings = function(data){
-  $(".things-data").html("");
-  for (var i = 0; i < 3; i++) {
-    $(".things-data").append("<br>");
-    for (var key in data[this.clothing] ) {
-      $(".things-data").append(key+":  "+ data[this.clothing][key]+"<br>");
-    }
+WeatherBike.prototype.renderThings = function(){
+  for (var key in chartData[this.clothing] ) {
+    $(".things-data").append(key+":  "+ chartData[this.clothing][key]+"<br>");
   }
+  $(".things-data").append("<br>");
 };
 
 WeatherBike.prototype.selectClothing = function(data){
-  if (data.list[this.time].main.temp >= 85){
-    this.clothing = 'g';
-  }
-  else if (data.list[this.time].main.temp >= 70) {
-    this.clothing = 'f';
-  }
-  else if (data.list[this.time].main.temp >= 80) {
-    this.clothing = 'e';
-  }
-  else {
-    this.clothing = "a";
-  }
-};
-WeatherBike.prototype.getCityData= function(){
-  var location = $("#location").val();
-  setUrl ="http://api.openweathermap.org/data/2.5/forecast?q="+location+"&units=imperial&appid=34bb7fc0787f2eba85b664ce72ba5455";
-  $.ajax({
-    url:setUrl,
-    //better to set function to set data?
-    success: function(data){
-      weatherData = data; // <--------- like this
-    },
-    error: function(data){
-      alert("error!");
-      console.log(data + "error");
+  $(".things-data").html("");
+
+  var thingtorender;
+
+  for (var i = selectDay()[0]; i < days(); i++) {
+
+    if (data.list[i].main.temp >= 80){
+      this.clothing = 'g';
+      this.renderThings();
     }
-  });
+    else if (data.list[i].main.temp >= 75) {
+      this.clothing = 'f';
+      this.renderThings();
+    }
+    else if (data.list[i].main.temp >= 70) {
+      this.clothing = 'e';
+      this.renderThings();
+    }
+    else {
+      this.clothing = "a";
+      this.renderThings();
+    }
+  }
 };
 
 var options = {
@@ -71,14 +74,14 @@ function success(pos) {
   $.ajax({
     url:setUrl,
     success: function(data){
-      $("#location").val(data.city.name);
+      var curentCity = data.city.name;
+      $("#location").val(curentCity);
       weatherData = data;
-      denver = new WeatherBike(data);
-      denver.renderWeather(data);
-      denver.selectClothing(data);
-      denver.renderThings(chartData);
-      // console.log(weatherData.list[1].dt);
-      // console.log(moment.unix(weatherData.list[1].dt).format("MM/DD/YYYY h:mm:ss a"));
+      curentCity= new WeatherBike(data);
+      curentCity.renderWeather(data);
+      curentCity.selectClothing(data);
+      // console.log("got data");
+
     },
     error: function(data){
       alert("error!");
@@ -88,4 +91,39 @@ function success(pos) {
 }
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+function getData(){
+  var location = $("#location").val();
+  setUrl ="http://api.openweathermap.org/data/2.5/forecast?q="+location+"&units=imperial&appid=34bb7fc0787f2eba85b664ce72ba5455";
+  $.ajax({
+    url:setUrl,
+    //better to set function to set data?
+    success: function(data){
+      weatherData = data; // <--------- like this
+      selectedCity= new WeatherBike(data);
+      selectedCity.renderWeather(data);
+      selectedCity.selectClothing(data);
+      // selectDay();
+    },
+    error: function(data){
+      alert("error!");
+      console.log(data + "error");
+    }
+  });
+}
+function selectDay(){
+  var dateArr = [];
+  var date = $("#date").val() ;
+  for (var i = 0; i < weatherData.list.length; i++) {
+    if (moment.unix(weatherData.list[i].dt).format("L") === date) {
+      dateArr.push(weatherData.list.indexOf(weatherData.list[i]));
+    }
+  }
+  if (dateArr[0] === undefined){
+    // console.log("0");
+    return 0;
+  }else{
+    // console.log("date arr");
+    return dateArr;
+  }
 }
