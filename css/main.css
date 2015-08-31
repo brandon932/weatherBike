@@ -24,9 +24,9 @@ h1{
 
 }
 .header{
-  text-align: center;
-  height: 80px;
-  background-color: rgba(143, 143, 143, 0.9)
+  /*text-align: center;*/
+  /*height: 80px;*/
+  /*background-color: rgba(143, 143, 143, 0.9)*/
 }
 .row{
   text-align: left;

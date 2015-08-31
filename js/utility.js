@@ -43,15 +43,23 @@ WeatherBike.prototype.selectClothing = function(data){
 
   for (var i = selectDay()[0]; i < days(); i++) {
 
-    if (data.list[i].main.temp >= 80){
+    if (data.list[i].main.temp >= 76){
       this.clothing = 'g';
       this.renderThings();
     }
-    else if (data.list[i].main.temp >= 75) {
+    else if (data.list[i].main.temp >= 61) {
       this.clothing = 'f';
       this.renderThings();
     }
-    else if (data.list[i].main.temp >= 70) {
+    else if (data.list[i].main.temp >= 46) {
+      this.clothing = 'e';
+      this.renderThings();
+    }
+    else if (data.list[i].main.temp >= 33 ) {
+      this.clothing = 'e';
+      this.renderThings();
+    }
+    else if (data.list[i].main.temp >= 33) {
       this.clothing = 'e';
       this.renderThings();
     }

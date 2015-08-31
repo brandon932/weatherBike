@@ -13,37 +13,43 @@ var chartData ={
   	    'feet' : 'Winter boots and wool socks',
   	    'hands' : 'Windproof mittens'
 		} ,
+  //  below freazing
 'b' : {'head' : 'Facemask and hat',
   	    'legs' : 'Thermal underlayer, winter bike pants',
   	    'chest' : 'Insulating layer and windproof layer',
   	    'feet' : 'Winter boots and wool socks',
   	    'hands' : 'Windproof mittens'
 		} ,
+    //33-45
 'c' : {'head' : 'Hat and scarf',
 	      'legs' : 'Thermal underlayer and winter bike pants',
   	    'chest' : 'Insulating layer and windproof layer',
   	    'feet' : 'Winter boots and wool socks',
   	    'hands' : 'Windproof mittens'
 		} ,
+    // 33-45 with rain
 'd' : {'head' : 'Winter beanie',
   	    'legs' : 'Warm pants',
   	    'chest' : 'Windproof jacket' ,
   	    'feet' : 'Normal shoes and warm socks' ,
   	    'hands' : 'Winter gloves'
 		 },
-'e' : {'head' : 'Winter beanie',
+     // 46 - 60
+'e' : {'head' : 'helmet',
   	    'legs' : 'Warm pants',
   	    'chest' : 'Windproof jacket',
   	    'feet' : 'Normal shoes and warm socks' ,
   	    'hands' : 'Light gloves'
 		} ,
-'f' : {'head' : 'Bare' ,
+    // 61 - 75
+'f' : {'head' : 'helmet' ,
   	    'legs' : 'Light pants or shorts' ,
   	    'chest' : 'Light sweater' ,
   	    'feet' : 'Summer shoes' ,
   	    'hands' : 'Light gloves or bare hands'
 		} ,
-'g' : {'head' : 'Bare' ,
+    // 76 or hotter
+'g' : {'head' : 'helmet' ,
   	    'legs' : 'Light pants or shorts' ,
   	    'chest' : "Light shirt",
   	    'feet' : 'Summer shoes' ,
